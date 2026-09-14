@@ -10,5 +10,8 @@ Testing!
 
 [![Releases](https://img.shields.io/github/release/Izzy2862006/sem/all.svg?style=flat-square)](https://github.com/Izzy2862006/sem/releases)
 
+# DevOps
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/<Izzy2862006>/<repository>/<action name taken from main.yml>/<develop>?style=flat-square)
+
 
 
