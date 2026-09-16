@@ -6,10 +6,10 @@ import java.sql.SQLException;
 
 public class App
 {
-    public static void main(String[] args)
-    {
-        Connection con = null;
+    private Connection con = null;
 
+    public void connect()
+    {
         int retries = 10;
 
         for (int i = 0; i < retries; i++)
@@ -24,7 +24,7 @@ public class App
                         "example"
                 );
 
-                System.out.println("Successfully connected to database!");
+                System.out.println("Successfully connected");
                 break;
             }
             catch (SQLException e)
@@ -48,22 +48,37 @@ public class App
                 }
             }
         }
+    }
 
-        if (con == null)
+    /**
+     * Disconnect from the MySQL database.
+     */
+    public void disconnect()
+    {
+        if (con != null)
         {
-            System.out.println("Could not connect to database.");
-            return;
+            try
+            {
+                con.close();
+                System.out.println("Database connection closed");
+            }
+            catch (SQLException e)
+            {
+                System.out.println("Error closing connection to database");
+                System.out.println(e.getMessage());
+            }
         }
+    }
 
-        try
-        {
-            con.close();
-            System.out.println("Database connection closed.");
-        }
-        catch (SQLException e)
-        {
-            System.out.println("Error closing database connection.");
-            System.out.println(e.getMessage());
-        }
+    public static void main(String[] args)
+    {
+        // Create new Application
+        App a = new App();
+
+        // Connect to database
+        a.connect();
+
+        // Disconnect from database
+        a.disconnect();
     }
 }
