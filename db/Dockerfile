@@ -12,3 +12,5 @@ COPY test_db/employees.sql /docker-entrypoint-initdb.d/
 
 # Root password for the lab environment
 ENV MYSQL_ROOT_PASSWORD=example
+
+#
